@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<title>
+   HOUSE OF PIOUS
+  </title>
+<style>
+/* COMPREHENSIVE LAYOUT OVERRIDE TO MATCH YEEZYGAME */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+body {
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #f8f9fa !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.game-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.title {
+  margin: 10px 0 20px 0 !important;
+  text-align: center !important;
+  font-size: 18px !important;
+}
+
+.canvas-wrapper {
+  width: 404px !important;
+  max-width: 100% !important;
+  height: 404px !important;
+  margin: 0 auto 5px auto !important;
+  position: relative !important;
+  border: 2px solid #36c !important;
+  border-radius: 20px !important;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.4) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+#game {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  touch-action: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+}
+
+.score-container {
+  width: 100% !important;
+  max-width: 400px !important;
+  margin: 5px auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 10px !important;
+}
+
+.score-container p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  color: #000 !important;
+  flex: 0 0 auto !important;
+}
+
+.score-container p:first-child {
+  text-align: left !important;
+}
+
+.score-container p:nth-child(2) {
+  text-align: right !important;
+}
+
+.score-container p:nth-child(3),
+.score-container p:nth-child(n+3) {
+  display: none !important;
+}
+
+.button-wrapper {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 15px !important;
+  margin: 2em auto 0 auto !important;
+  padding: 0 !important;
+  width: auto !important;
+  max-width: 400px !important;
+}
+
+.start-button,
+.pause-button {
+  background-color: #061138 !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  font-size: 10px !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  font-family: 'Press Start 2P', cursive !important;
+  min-width: auto !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: normal !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+}
+
+body.game-running .start-button {
+  display: none !important;
+}
+
+.pause-button {
+  display: none !important;
+}
+
+body.game-running .pause-button {
+  display: inline-block !important;
+}
+
+.start-button:hover,
+.pause-button:hover {
+  opacity: 0.9 !important;
+}
+
+.game-over {
+  display: none;
+}
+
+/* RESPONSIVE DESIGN FOR ALL DEVICES */
+/* Mobile phones (portrait) - up to 480px */
+@media screen and (max-width: 480px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .game-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  .canvas-wrapper {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: 95vw !important;
+    max-height: 95vw !important;
+    margin: 0 auto 10px auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  #game {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .score-container {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    font-size: 11px !important;
+    padding: 0 2.5vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  .score-container p {
+    font-size: 11px !important;
+  }
+  
+  .button-wrapper {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  .start-button,
+  .pause-button {
+    padding: 12px 18px !important;
+    font-size: 9px !important;
+    min-width: 80px !important;
+  }
+  
+  .title {
+    font-size: 14px !important;
+    margin: 5px 0 15px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  body {
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Mobile phones (landscape) - 481px to 768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  
+  .game-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 15px 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  .canvas-wrapper {
+    width: 85vw !important;
+    max-width: 85vw !important;
+    height: 85vw !important;
+    max-height: 85vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  #game {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  
+  .score-container {
+    width: 85vw !important;
+    max-width: 85vw !important;
+    font-size: 12px !important;
+    padding: 0 2.5vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  .button-wrapper {
+    width: 85vw !important;
+    max-width: 85vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  .start-button,
+  .pause-button {
+    padding: 11px 19px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* Tablets - 769px to 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .game-container {
+    max-width: 600px !important;
+  }
+  
+  .canvas-wrapper {
+    width: 550px !important;
+    height: 550px !important;
+  }
+  
+  #game {
+    width: 550px !important;
+    height: 550px !important;
+  }
+  
+  .score-container {
+    max-width: 550px !important;
+  }
+}
+
+/* Desktop - 1025px and above */
+@media screen and (min-width: 1025px) {
+  .game-container {
+    max-width: 600px !important;
+  }
+  
+  .canvas-wrapper {
+    width: 550px !important;
+    height: 550px !important;
+  }
+  
+  #game {
+    width: 550px !important;
+    height: 550px !important;
+  }
+  
+  .score-container {
+    max-width: 550px !important;
+  }
+}
+
+/* Large desktop - 1440px and above */
+@media screen and (min-width: 1440px) {
+  .canvas-wrapper {
+    width: 550px !important;
+    height: 550px !important;
+  }
+  
+  #game {
+    width: 550px !important;
+    height: 550px !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .start-button,
+  .pause-button {
+    padding: 14px 24px !important;
+    font-size: 10px !important;
+    min-height: 44px !important;
+    min-width: 100px !important;
+  }
+  
+  .button-wrapper {
+    gap: 20px !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .canvas-wrapper {
+    border-width: 1.5px !important;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  
+  .game-container {
+    padding: 5px 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .canvas-wrapper {
+    width: 70vh !important;
+    height: 70vh !important;
+    max-width: 70vh !important;
+    max-height: 70vh !important;
+    box-sizing: border-box !important;
+  }
+  
+  #game {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  
+  .title {
+    font-size: 12px !important;
+    margin: 5px 0 10px 0 !important;
+  }
+  
+  .score-container {
+    width: 70vh !important;
+    max-width: 70vh !important;
+    margin: 3px auto !important;
+    font-size: 11px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .button-wrapper {
+    width: 70vh !important;
+    max-width: 70vh !important;
+    margin: 1em auto 0 auto !important;
+    box-sizing: border-box !important;
+  }
+  
+  body {
+    padding-top: 5px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Performance optimizations */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Prevent horizontal overflow - comprehensive fix */
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+}
+
+.game-container, .score-container, .button-wrapper, .canvas-wrapper {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+canvas {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  image-rendering: pixelated !important;
+  -webkit-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+  will-change: contents !important;
+}
+
+/* Prevent text selection and improve touch performance */
+body, button, p {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* END RESPONSIVE DESIGN */
+/* END COMPREHENSIVE OVERRIDE */
+</style>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Press+Start+2P&display=swap');
+
+html, body{
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #f8f9fa !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", cursive;
+}
+
+.title{
+  text-align: center;
+}
+
+canvas {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAACAvzbMAAAMPGlDQ1BJQ0MgUHJvZmlsZQAASAAAAAEAAABIAAAAAUluc3RhZ3JhbQAyMDIzOjAyOjIyIDE0OjMxOjAyAAAPkAAABwAAAAQwMjIxkAMAAgAAABQAAAFKkAQAAgAAABQAAAFekBAAAgAAAAcAAAFykBEAAgAAAAcAAAF6kBIAAgAAAAcAAAGCkQEABwAAAAQBAgMAkpAAAgAAAAQ2MjEAkpEAAgAAAAQ2MjEAkpIAAgAAAAQ2MjEAoAAABwAAAAQwMTAwoAEAAwAAAAH//wAAoAIABAAAAAEAAAILoAMABAAAAAEAAAILpAYAAwAAAAEAAAAAAAAAADIwMjM6MDI6MjIgMTQ6MzE6MDIAMjAyMzowMjoyMiAxNDozMTowMgArMDI6MDAAACswMjowMAAAKzAyOjAwAACBki9CAAACA0lEQVR4nHWTvWpqQRSF1z7eSggW/nWK2NhJCwMJpAkiViKWgoJY+AC+gGATTmEVkJi8QapA0gQsJKSw9a/QQhsFI8KJhUbMzEqRe4LJvX7VzOyZvYbhGyFJ/IUkRAS/sbf8rhn2QGv9XdzrB6UURAQiAqXUj8Oyn7yP3UxEQBJaazgcjh+3M+xu9/f38Pl8OD4+xuvrKwzDgIjg8vISXq8XHo8H9XodIgKt9Vey1poiglgshkQiAbfbjU6nA9M0UavV0Ol0EI/HMRqNcHt7i16vh3A4/JWutabWmldXV7Rpt9uMRqN8eXnhPtlsloPB4Htu2A+y2WxQKBTQ7XZxcnKCVCqF9XqNWq2GxWKB6XSKZDKJfr8P0zQxn88hSikul0uUy2W8vb1htVqh2Wzi6ekJpVIJp6enGI/HKBaLyOfzOD8/h8fjgWVZgFKKz8/PvLu7I0leX19Ta81Wq8VGo0GSrFartCyL7+/vrNfrJMlms8k/hmFgMBhgt9tBKYXpdAoRwXA4hM/nw2q1glIKLpcLj4+PcDqdUErh4uICGjYyGfL5fDg+PsbpdM7JZEIR4dnZGUMhEGezmTXW3O12RDo9Zrlcvj4+QJJUNpEkDxp2yPV/DNt31rZn3/X/rR10+9Dv+s0n5Ep7LbPpMNEAAAAASUVORK5CYII=");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  display: block;
+  width: 400px;
+  height: 400px;
+}
+
+.start-button{
+  font-family: "Press Start 2P", cursive;
+  margin-top: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #061138;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.game-over{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.score-display{
+  color: #000;
+  margin-bottom: 105px;
+  text-align: center;
+}
+
+div[style*="display: flex"] {
+  align-items: center;
+}
+
+div.button-wrapper {
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  min-width: 120px;
+  height: 40px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.button-wrapper {
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+button {
+  min-width: 120px;
+  height: 40px;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+<style>
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+  position: relative !important;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+</style>
+<style>
+button {
+  min-width: 100px;
+  height: 40px;
+  font-size: 16px;
+}
+</style></head>
+<body>
+<div class="game-container">
+<p class="title">HOUSE OF PIOUS</p>
+<div class="canvas-wrapper">
+<canvas height="400" id="game" style="width: 100%; height: 100%; display: block; box-sizing: border-box;" width="400">
+</canvas>
+</div>
+<div class="score-container">
+<p style="margin: 0; padding: 0;">Score: <span class="score-display">0</span></p>
+<p style="margin: 0; padding: 0;">High Score: <span class="high-score-display">0</span></p>
+</div>
+<div class="button-wrapper">
+<button class="start-button">Start</button>
+<button class="pause-button">Pause</button>
+</div>
+<div class="game-over">
+<h2>
+     Game Over
+    </h2>
+<p>
+     Final Score:
+     <span class="score-display">
+      0
+     </span>
+</p>
+<button class="start-button">
+     Again
+    </button>
+<audio id="collisionSound" src="coll.mp3">
+</audio>
+<audio id="eatingSound" src="eat.mp3">
+</audio>
+<audio id="pauseSound" src="pause.mp3">
+</audio>
+</div>
+</div>
+<script>
+   const gemImg = new Image();
+gemImg.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAABamlDQ1BJQ0MgUHJvZmlsZQAAeJx1kL1Lw1AUxU+rUtA6iA4dHDKJQ9TSCnZxaCsURTBUBatTmn4JbXwkKVJxE1cp+B9YwVlwsIhUcHFwEEQHEd2cOim4aHjel1TaIt7H5f04nHO5XMAbUBkr9gIo6ZaRTMSktdS65HuDh55TqmayqKIsCv79u+vz0fXeT4hZTbt2ENlPXJfOLpd2ngJTf/1d1Z/Jmhr939RBjRkW4JGJlW2LCd4lHjFoKeKq4LzLx4LTLp87npVknPiWWNIKaoa4SSynO/R8B5eKZa21g9jen9VXl8Uc6lHMYRMmGIpQUYEEBeF//NOOP44tcldgUC6PAizKREkRE7LE89ChYRIycQhB6pC4c+t+D637yW1t7xWYbXDOL9raQgM4naGT1dvaeAQYGgBu6kw1VEfqofbmcsD7CTCYAobvKLNh5sIhd3t/DOh74fxjDPAdAnaV868jzu0ahZ+BK/0HFylqvLiAv9gAAAGKZVhJZk1NACoAAAAIAAcBEgADAAAAAQABAAABGgAFAAAAAQAAAGIBGwAFAAAAAQAAAGoBKAADAAAAAQACAAABMQACAAAACgAAAHIBMgACAAAAFAAAAHyHaQAEAAAAAQAAAJAAAAAAAAAASAAAAAEAAABIAAAAAUluc3RhZ3JhbQAyMDIzOjAyOjIyIDE0OjMxOjAyAAAPkAAABwAAAAQwMjIxkAMAAgAAABQAAAFKkAQAAgAAABQAAAFekBAAAgAAAAcAAAFykBEAAgAAAAcAAAF6kBIAAgAAAAcAAAGCkQEABwAAAAQBAgMAkpAAAgAAAAQ2MjEAkpEAAgAAAAQ2MjEAkpIAAgAAAAQ2MjEAoAAABwAAAAQwMTAwoAEAAwAAAAH//wAAoAIABAAAAAEAAAILoAMABAAAAAEAAAILpAYAAwAAAAEAAAAAAAAAADIwMjM6MDI6MjIgMTQ6MzE6MDIAMjAyMzowMjoyMiAxNDozMTowMgArMDI6MDAAACswMjowMAAAKzAyOjAwAACBki9CAAACA0lEQVR4nHWTvWpqQRSF1z7eSggW/nWK2NhJCgMJpAkiViKWgoJY+AC+gGATTmEVkJi8QapA0gQsJKSw9a/QQhsFI8KJhUbMzEqRe4LJvX7VzOyZvYbhGyFJ/IUkRAS/sbf8rhn2QGv9XdzrB6UURAQiAqXUj8Oyn7yP3UxEQBJaazgcjh+3M+xu9/f38Pl8OD4+xuvrKwzDgIjg8vISXq8XHo8H9XodIgKt9Vey1poiglgshkQiAbfbjU6nA9M0UavV0Ol0EI/HMRqNcHt7i16vh3A4/JWutabWmldXV7Rpt9uMRqN8eXnhPtlsloPB4Htu2A+y2WxQKBTQ7XZxcnKCVCqF9XqNWq2GxWKB6XSKZDKJfr8P0zQxn88hSikul0uUy2W8vb1htVqh2Wzi6ekJpVIJp6enGI/HKBaLyOfzOD8/h8fjgWVZgFKKz8/PvLu7I0leX19Ta81Wq8VGo0GSrFartCyL7+/vrNfrJMlms8k/hmFgMBhgt9tBKYXpdAoRwXA4hM/nw2q1glIKLpcLj4+PcDqdUErh4uICyGQyBPCd7Pf7GYlEeHR0xPl8zslkQhHh2dkZQ6EQZ7MZtdbc7XZEOp1muVzmx8cHSfLm5oaBQICVSoUkud1umcvlGAwG+fDwQJJUSpEkDxp2yPV/DNt31rZn3/X/rR10+9Dv+s0n5Ep7LbPpMNEAAAAASUVORK5CYII=";
+
+// Chapter 1: Declaration and Initialization
+// Chapter 2: Sound Effects and HTML Elements
+// Chapter 3: Setup Event Listeners [computer, smart]
+// Chapter 4: Start and End Game Functions
+// Chapter 5: Main Loop Function
+
+const canvas = document.getElementById('game');
+const context = canvas.getContext('2d');
+const collisionSound = document.getElementById('collisionSound');
+const eatingSound = document.getElementById('eatingSound');
+const pauseSound = document.getElementById('pauseSound');
+
+let gameRunning = false;
+
+let gamePaused = false;
+
+let grid = 16; // KEEP INDEX 2-2's GAMEPLAY GRID SIZE
+
+let count = 0;
+
+let score = 0;
+
+let gemEaten = false;
+
+let allowanceCounter = 0;
+
+let snake = {
+    x: 160, // KEEP INDEX 2-2's SNAKE POSITION
+    y: 160, // KEEP INDEX 2-2's SNAKE POSITION
+    dx: grid,
+    dy: 0,
+    cells: [],
+    maxCells: 4 
+};
+
+let gem = {
+    x: 320, // KEEP INDEX 2-2's GEM POSITION
+    y: 320  // KEEP INDEX 2-2's GEM POSITION
+};
+
+// FPS - Frames Per Second [the higher the better]
+// requestAnimationFrame(loop)
+let animationFrame;
+let startButton = document.querySelector('.start-button');
+let gameOverScreen = document.querySelector('.game-over');
+let scoreDisplay = document.querySelector('.score-display');
+let highScoreDisplay = document.querySelector('.high-score-display');
+let highScore = localStorage.getItem('highScore') || 0;
+highScoreDisplay.textContent = highScore;
+
+// This is a function that helps us generate a random position for the gem on the grid.
+// It takes a min and a max number, and then we invoque it by feeding a minimim number(0) and a maximum number(25).
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max-min)) + min;
+}
+
+// Pause button event listener - INSTANT RESUME (no hold delay)
+const pauseButton = document.querySelector('.pause-button');
+
+pauseButton.addEventListener('click', function () {
+    if (!gameRunning) return;
+
+    gamePaused = !gamePaused;
+    const pauseBtn = document.querySelector('.pause-button');
+    context.fillStyle = '#fff';
+    context.font = 'bold 30px Arial';
+    if (gamePaused) {
+        pauseSound.play();
+        pauseBtn.textContent = 'Resume';
+        context.fillText('Game Paused', canvas.width / 2 - 100, canvas.height / 2);
+    } else {
+        pauseSound.play();
+        pauseBtn.textContent = 'Pause';
+        animationFrame = requestAnimationFrame(loop);
+        setTimeout(() => {
+            const gif = document.getElementById('introGif');
+            if (gif) gif.remove();
+        }, 50);
+    }
+});
+
+
+// Start Game event listener
+startButton.addEventListener('click', function(){
+    // sanity check
+    // console.log("Button is clicked!")
+    startGame();
+});
+
+// Restart game when game is over
+gameOverScreen.querySelector('.start-button').addEventListener('click', function(){
+    startGame();
+});
+
+// Event Listeners for the computer version
+document.addEventListener('keydown', function(e){
+    if (!gameRunning){
+        return;
+    }
+    // 37 for Left key, 38 for up key, 39 for right key, 40 for down key and 32 for Spacebar key.
+    // Arrow keys for moving the snake
+    if ([32, 37, 38, 39, 40].includes(e.which)) e.preventDefault();
+    if (e.which === 37 && snake.dx === 0){
+        snake.dx = -grid;
+        snake.dy = 0;
+    }else if (e.which === 38 && snake.dy === 0){
+        snake.dy = -grid;
+        snake.dx = 0;
+    }else if (e.which === 39 && snake.dx ===0){
+        snake.dx = grid;
+        snake.dy = 0;
+    }else if (e.which === 40 && snake.dy ===0){
+        snake.dy = grid;
+        snake.dx=0;
+    }
+    // Spacebar for pausing the game
+    if (e.which === 32){
+        gamePaused = !gamePaused; // ! = NOT
+        const pauseBtn = document.querySelector('.pause-button');
+        context.fillStyle = '#fff';
+        context.font = 'bold 30px Arial';
+        if (gamePaused){
+            pauseSound.play();
+            pauseBtn.textContent = 'Resume';
+            context.fillText('Game Paused', canvas.width / 2 - 100, canvas.height / 2);           
+        }else{
+            // Resume the game
+            pauseSound.play();
+            pauseBtn.textContent = 'Pause';
+            animationFrame = requestAnimationFrame(loop);
+  setTimeout(() => { const gif = document.getElementById('introGif'); if (gif) gif.remove(); }, 50);
+        }
+    } 
+});
+
+// Event listeners for the smartphone version
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', function(e){
+    if (!gameRunning){
+        return;
+    }
+    // Initial points for the snake to move on the screen
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', function(e){
+    if (!gameRunning){
+        return;
+    }
+
+    // Swipe detection and snake movement
+    let touchEndX = e.touches[0].clientX;
+    let touchEndY = e.touches[0].clientY;
+    let dx = touchEndX - touchStartX;
+    let dy = touchEndY - touchStartY;
+
+    if (Math.abs(dx) > Math.abs(dy)){
+        // Right swipe
+        if (dx > 0 && snake.dx ===0){
+            snake.dx = grid;
+            snake.dy = 0;
+        // Left swipe
+        } else if (dx < 0 && snake.dx === 0){
+            snake.dx = -grid;
+            snake.dy = 0;
+        }
+    }else{
+        // Down Swipe
+        if (dy > 0 && snake.dy === 0){
+            snake.dy = grid;
+            snake.dx = 0;
+        // Up Swipe
+        }else if (dy < 0 && snake.dy === 0){
+            snake.dy = -grid;
+            snake.dx = 0;
+        }
+    }
+});
+
+// Main loop function
+function loop(){
+    if (!gameRunning || gamePaused){
+        return;
+    }
+    // The allowance period for the snake to turn yellow for a few seconds then returns back to black (dark green)
+    if (gemEaten){
+        allowanceCounter++;
+        if (allowanceCounter >=50){
+            gemEaten = false;
+            allowanceCounter = 0;
+        }
+    }
+    // set animationFrame to loop function recursively operated via requestAnimationFrame method
+    animationFrame = requestAnimationFrame(loop);
+  setTimeout(() => { const gif = document.getElementById('introGif'); if (gif) gif.remove(); }, 50);
+
+    // Control game loop speed
+    if (++count < 100){
+        return;
+    }
+    count = 95; // speed
+
+    context.clearRect(0,0, canvas.clientWidth, canvas.height);
+    
+    snake.x += snake.dx;
+    
+    snake.y += snake.dy;
+
+    // Wrap the snake position on screen edges
+    if (snake.x < 0){
+        snake.x = canvas.width - grid
+    } else if (snake.x >= canvas.width){
+        snake.x = 0;
+    }
+    if (snake.y < 0){
+        snake.y = canvas.height - grid
+    } else if (snake.y >= canvas.height){
+        snake.y = 0;
+    }
+
+    // Add the current head position to the snake cells array and remove the tail if exceeding the maximum cell count.
+    snake.cells.unshift({x: snake.x, y: snake.y});
+    if (snake.cells.length > snake.maxCells){
+        snake.cells.pop();
+    }
+
+    // Draw grid lines - KEEP INDEX 2-2's GRID DRAWING (i < canvas.width, not <=)
+    context.strokeStyle = '#333';
+    for (let i = 0; i < canvas.width; i += grid) {
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, canvas.height);
+        context.stroke();
+    }
+    for (let j = 0; j < canvas.height; j += grid) {
+        context.beginPath();
+        context.moveTo(0, j);
+        context.lineTo(canvas.width, j);
+        context.stroke();
+    }
+
+    // Draw the gems and the snake
+    context.fillStyle = "#fff"
+    context.fillStyle = "#ffffff";
+    context.fillRect(gem.x, gem.y, grid - 1, grid - 1);
+    if (gemImg.complete) {
+        context.imageSmoothingEnabled = false;
+        context.drawImage(gemImg, gem.x, gem.y, grid - 1, grid - 1);
+    }
+    context.shadowColor = 'rgba(0,0,0,0.5)';
+    context.shadowBlur = 5;
+    context.shadowOffsetX = 2; //in tutorial , there was a missing S in both X and Y.
+    context.shadowOffsetY = 2;
+    context.fillStyle = gemEaten ? '#ff9900' : '#ffff00';
+
+    // Draw canvas border manually
+    context.strokeStyle = '#748c72';
+    context.lineWidth = 2;
+    context.strokeRect(1, 1, canvas.width - 2, canvas.height - 2);
+
+    // Drawing the snake and eating the gem
+    snake.cells.forEach(function(cell, index){
+        context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+        if (cell.x === gem.x && cell.y === gem.y){
+            //Snake eats gem: cells increase, scores increases, scoredisplay is being updated with the actual score.
+            snake.maxCells++;
+            score++;
+            scoreDisplay.textContent = score;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore);
+                highScoreDisplay.textContent = highScore;
+            }
+            // Playing eating sound
+            eatingSound.play();
+            //Generate a new random gem position
+            gem.x = getRandomInt(0,25) * grid;
+            gem.y = getRandomInt(0,25) * grid;
+            gemEaten = true;
+        }
+
+        // Check collision with snake's own body (game is over!)
+        for (let i = index + 1; i < snake.cells.length; i++){
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y){
+                // invoking the endGame method
+                endGame();           
+            }
+        }
+    });
+}
+
+// Start Game function
+function startGame(){
+  
+    
+    
+    if (gameRunning){
+        return;
+    }
+    gameRunning = true;
+    gamePaused = false;
+    score = 0;
+    snake.x = 160; // KEEP INDEX 2-2's SNAKE START POSITION
+    snake.y = 160; // KEEP INDEX 2-2's SNAKE START POSITION
+    snake.cells = [];
+    snake.maxCells = 4;
+    snake.dx = grid;
+    snake.dy = 0;
+    gem.x = getRandomInt(0,25) * grid;
+    gem.y = getRandomInt(0,25) * grid;
+    startButton.style.display = 'none';
+    gameOverScreen.style.display = 'none';
+    scoreDisplay.textContent = score;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore);
+                highScoreDisplay.textContent = highScore;
+            }
+    // Toggle button visibility - add class to body
+    document.body.classList.add('game-running');
+    // Set pause button text to "Pause" when game starts
+    const pauseBtn = document.querySelector('.pause-button');
+    if (pauseBtn) {
+        pauseBtn.textContent = 'Pause';
+    }
+    if (animationFrame){
+        cancelAnimationFrame(animationFrame);
+    }animationFrame = requestAnimationFrame(loop);
+  setTimeout(() => { const gif = document.getElementById('introGif'); if (gif) gif.remove(); }, 50);
+}
+
+// End game function
+function endGame(){
+    // Cancel animation frame first to prevent loop from clearing canvas
+    if (animationFrame){
+        cancelAnimationFrame(animationFrame);
+    }
+    gameRunning = false;
+    gamePaused = true;
+    gameOverScreen.style.display = 'block';
+    document.querySelector('.game-over .score-display').textContent = score;
+    
+    // Toggle button visibility back - remove class from body
+    document.body.classList.remove('game-running');
+    
+    // play the hitting sound
+    collisionSound.play();
+    
+    // Draw "Game Over" on canvas with same styling as "Game Paused"
+    context.fillStyle = '#fff';
+    context.font = 'bold 30px Arial';
+    context.fillText('Game Over', canvas.width / 2 - 100, canvas.height / 2);
+}
+  </script>
+</body>
+</html>
+
